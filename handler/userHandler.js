@@ -42,11 +42,20 @@ router.post('/login',async(req,res)=>{
                     'message':'login successful',
                     'access_token':token
                 })
+            }else{
+                res.status(403).json({
+                    'error':'Authentication failed',
+                })
             }
+        }
+        else{
+            res.status(403).json({
+                'error':'Authentication failed',
+            })
         }
     }
     catch(err){
-        res.status(500).json({
+        res.status(403).json({
             'error':'authentication failed'
         })
     }
